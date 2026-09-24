@@ -43,9 +43,7 @@
     .icon-btn{width:var(--tap);height:var(--tap);border:1px solid var(--line);background:var(--panel);border-radius:16px;display:grid;place-items:center;box-shadow:0 3px 12px rgba(20,30,50,.04);color:var(--text)}
     .icon-btn svg{width:23px;height:23px}
     .view{display:none}.view.active{display:block}
-    .hero{display:flex;gap:14px;align-items:stretch;margin:14px 0 20px}
-    .hero-card{flex:1;background:linear-gradient(135deg,#fff,#f7f9ff);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
-    .hero-card h2{margin:0 0 6px;font-size:20px}.hero-card p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+    .hero{display:flex;gap:14px;align-items:center;justify-content:flex-end;margin:14px 0 20px}.hero-compact .primary-btn{min-width:190px}
     .primary-btn,.secondary-btn,.danger-btn,.ghost-btn{min-height:var(--tap);border-radius:15px;padding:0 18px;border:0;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px}
     .primary-btn{background:var(--primary);color:#fff;box-shadow:0 8px 18px rgba(31,111,235,.18)}
     .primary-btn:active{background:var(--primary-pressed)}
@@ -87,18 +85,18 @@
     .modal{width:min(100%,760px);max-height:92vh;background:var(--panel);border-radius:24px 24px 0 0;box-shadow:0 -20px 50px rgba(0,0,0,.18);overflow:hidden;display:flex;flex-direction:column}
     .modal-head{padding:17px 18px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.modal-head h3{margin:0;flex:1;font-size:20px}.modal-close{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:24px}
     .modal-body{padding:16px 18px;overflow:auto}.modal-foot{padding:12px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1.4fr;gap:9px;background:#fff}
-    .form-grid{display:grid;gap:13px}.label{font-size:13px;font-weight:800;margin-bottom:6px;display:block}.help{font-size:12px;color:var(--muted);line-height:1.45;margin-top:5px}.money-wrap{position:relative}.money-wrap .field{padding-right:40px}.currency{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:800}
+    .form-grid{display:grid;gap:13px}.event-time-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.label{font-size:13px;font-weight:800;margin-bottom:6px;display:block}.time-label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin:0 0 5px}.result-count{font-size:12px;color:var(--muted);line-height:1.4}.sheet-status{margin-bottom:10px}.money-wrap{position:relative}.money-wrap .field{padding-right:40px}.currency{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:800}
     .segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;background:var(--panel-2);padding:5px;border-radius:14px}.segmented button{min-height:46px;border:0;border-radius:10px;background:transparent;color:#59616b;font-weight:800}.segmented button.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(20,30,50,.08)}
     .tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;background:var(--panel-2);padding:5px;border-radius:14px;margin-bottom:15px}.tabs button{min-height:46px;border:0;border-radius:10px;background:transparent;font-weight:800;color:#59616b}.tabs button.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(20,30,50,.08)}
     .check-line{display:flex;align-items:center;gap:12px;min-height:54px;border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:#fff}.check-line input{width:22px;height:22px;accent-color:var(--primary)}
     .student-tools{display:grid;grid-template-columns:1fr 145px;gap:8px;margin-bottom:9px}.student-list{border:1px solid var(--line);border-radius:14px;max-height:310px;overflow:auto;background:#fff}.student-item{display:flex;gap:11px;align-items:center;padding:11px 12px;border-bottom:1px solid #edf0f2}.student-item:last-child{border-bottom:0}.student-item input{width:22px;height:22px;accent-color:var(--primary);flex:0 0 auto}.student-item .n{font-weight:750}.student-item .c{font-size:12px;color:var(--muted);margin-top:2px}.student-empty{padding:24px;text-align:center;color:var(--muted)}
     .inline-info{border-radius:13px;padding:11px 12px;background:#eef5ff;color:#275f9a;font-size:13px;line-height:1.45}.inline-warning{border-radius:13px;padding:11px 12px;background:#fff7e6;color:#80540b;font-size:13px;line-height:1.45}.inline-danger{border-radius:13px;padding:11px 12px;background:#fff0f0;color:#982f2f;font-size:13px;line-height:1.45}
-    .report-options{display:grid;gap:9px;margin-bottom:14px}.report-preview{border:1px solid var(--line);border-radius:14px;background:#eef0f3;padding:10px;overflow:auto}.print-sheet{background:#fff;width:210mm;min-height:120mm;margin:0 auto;padding:14mm;box-shadow:0 3px 14px rgba(20,30,50,.08);color:#111;font-family:Arial,sans-serif}.print-sheet h1{font-size:20px;margin:0 0 5px;text-align:center}.print-sheet .print-meta{text-align:center;font-size:11px;color:#444;margin-bottom:12px}.print-sheet table{width:100%;border-collapse:collapse;font-size:11px}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:7px 6px;text-align:left}.print-sheet th{background:#f1f2f4;font-weight:700}.print-sheet .report-summary{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin:8px 0 12px}.print-sheet .report-foot{font-size:9px;color:#666;margin-top:12px;text-align:right}
+    .report-options{display:grid;gap:9px;margin-bottom:14px}.report-preview{border:1px solid var(--line);border-radius:14px;background:#eef0f3;padding:10px;overflow:auto}.print-sheet{background:#fff;width:210mm;min-height:120mm;margin:0 auto;padding:14mm;box-shadow:0 3px 14px rgba(20,30,50,.08);color:#111;font-family:Arial,sans-serif}.print-sheet h1{font-size:20px;margin:0 0 5px;text-align:center}.print-sheet .print-meta{text-align:center;font-size:11px;color:#444;margin-bottom:12px}.print-sheet table{width:100%;border-collapse:collapse;font-size:11px}.print-sheet th,.print-sheet td{border:1px solid #bbb;padding:7px 6px;text-align:left}.print-sheet th{background:#f1f2f4;font-weight:700}.print-sheet .report-summary{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin:8px 0 12px}
     .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;z-index:300;background:#17202a;color:#fff;border-radius:13px;padding:12px 16px;font-size:14px;max-width:calc(100% - 30px);box-shadow:0 10px 28px rgba(0,0,0,.22);transition:.2s;pointer-events:none;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
     .footer{text-align:center;color:var(--muted);font-size:12px;margin:24px 0 8px}.footer strong{color:#4f5964}
     .hide{display:none!important}.danger-zone{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
     @media(min-width:720px){.app-shell{padding-left:24px;padding-right:24px}.stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.modal-backdrop{align-items:center;padding:24px}.modal{border-radius:24px;max-height:88vh}.fabbar{grid-template-columns:1.2fr 1fr}.member-actions{grid-template-columns:repeat(4,max-content);justify-content:end}.member-card{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.member-actions{margin-top:0}.report-preview{max-height:55vh}}
-    @media(max-width:560px){.hero{display:block}.hero-card{margin-bottom:10px}.search-row,.student-tools{grid-template-columns:1fr}.print-sheet{width:760px}.detail-menu{display:none}}
+    @media(max-width:560px){.hero{display:block}.hero-compact .primary-btn{width:100%}.search-row,.student-tools{grid-template-columns:1fr}.print-sheet{width:760px}.detail-menu{display:none}}
     @media print{
       @page{size:A4 portrait;margin:10mm}
       body{background:#fff!important}
@@ -119,7 +117,7 @@
       <div class="topbar-inner">
         <div class="brand">
           <h1>Etkinlik Takip Programı</h1>
-          <div class="brand-meta"><span id="connectionDot" class="status-dot"></span><span id="connectionText">Bağlanıyor…</span><span>•</span><span>v1.2</span></div>
+          <div class="brand-meta"><span id="connectionDot" class="status-dot"></span><span id="connectionText">Bağlanıyor…</span><span>•</span><span>v1.3</span></div>
         </div>
         <button class="icon-btn" id="settingsBtn" aria-label="Ayarlar" title="Ayarlar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88L3.7 6.56a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8.5c.14.38.36.72.66 1 .3.27.69.4 1.1.4h.54a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.1.4c-.3.28-.52.62-.66 1Z"/></svg>
@@ -129,12 +127,8 @@
 
     <main>
       <section id="homeView" class="view active">
-        <div class="hero">
-          <div class="hero-card">
-            <h2>Etkinlikleri tek ekrandan takip edin</h2>
-            <p>Katılımcı, ödeme, borç ve izin belgesi durumlarını hızlıca kaydedin; gerektiğinde düzenli bir yazdırma raporu alın.</p>
-          </div>
-          <button class="primary-btn" id="newEventBtn" style="min-width:190px">+ Yeni Etkinlik</button>
+        <div class="hero hero-compact">
+          <button class="primary-btn" id="newEventBtn">+ Yeni Etkinlik</button>
         </div>
         <div class="section-head"><div><h2>Etkinlikler</h2><div class="sub" id="eventCountText">0 etkinlik</div></div></div>
         <div id="eventList" class="event-list"></div>
@@ -182,7 +176,7 @@
       </section>
     </main>
 
-    <div class="footer"><strong>Kodlayan: Ferhat Karagöz</strong> • Etkinlik Takip Programı v1.2</div>
+    <div class="footer"><strong>Kodlayan: Ferhat Karagöz</strong> • Etkinlik Takip Programı v1.3</div>
   </div>
 
   <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
@@ -201,7 +195,7 @@
     import { getAnalytics, isSupported as analyticsIsSupported } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
     import { getDatabase, ref, onValue, push, set, update, remove, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
-    const APP_VERSION = "1.2";
+    const APP_VERSION = "1.3";
     const APP_ROOT = "etkinliktakip";
     const DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/1OeDI5rQvWXP6s5OhgRFrh1dThnBMmA9mrCjgYuk1Qtw/edit?usp=sharing";
     const DEFAULT_SHEET_NAME = "Ogrenciler";
@@ -244,10 +238,37 @@
     };
     const clampMoney = (n) => Math.max(0, Math.round((numeric(n)+Number.EPSILON)*100)/100);
     const currency = (n) => moneyFmt.format(clampMoney(n));
-    const formatDateTime = (iso) => {
-      if (!iso) return "Tarih belirtilmedi";
-      const d = new Date(iso); if (Number.isNaN(d.getTime())) return iso;
-      return new Intl.DateTimeFormat("tr-TR", { day:"2-digit", month:"long", year:"numeric", hour:"2-digit", minute:"2-digit" }).format(d);
+    const todayInputValue = () => {
+      const d = new Date(), pad = n => String(n).padStart(2,"0");
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    };
+    const eventScheduleParts = (event={}) => {
+      const legacy = String(event.eventAt || "");
+      return {
+        date: String(event.eventDate || legacy.slice(0,10) || ""),
+        startTime: String(event.startTime || legacy.slice(11,16) || ""),
+        endTime: String(event.endTime || "")
+      };
+    };
+    const formatEventDate = (dateValue) => {
+      if (!dateValue) return "Tarih belirtilmedi";
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateValue);
+      if (!m) return dateValue;
+      const d = new Date(Number(m[1]), Number(m[2])-1, Number(m[3]));
+      return new Intl.DateTimeFormat("tr-TR", { day:"2-digit", month:"long", year:"numeric" }).format(d);
+    };
+    const formatEventSchedule = (event={}) => {
+      const {date,startTime,endTime} = eventScheduleParts(event);
+      const dateText = formatEventDate(date);
+      if (startTime && endTime) return `${dateText} • ${startTime}–${endTime}`;
+      if (startTime) return `${dateText} • ${startTime}`;
+      return dateText;
+    };
+    const eventStartTimestamp = (event={}) => {
+      const {date,startTime} = eventScheduleParts(event);
+      if (!date) return 0;
+      const d = new Date(`${date}T${startTime || "00:00"}`);
+      return Number.isNaN(d.getTime()) ? 0 : d.getTime();
     };
     const paymentState = (member, fee) => {
       const paid = clampMoney(member?.paidAmount || 0), total = clampMoney(fee || 0);
@@ -281,19 +302,19 @@
     function renderHome(){
       const list=$("eventList");
       const events = Object.entries(state.events).map(([id,e])=>({id,...e})).sort((a,b)=>{
-        const ta=new Date(a.eventAt||0).getTime()||0, tb=new Date(b.eventAt||0).getTime()||0;
+        const ta=eventStartTimestamp(a), tb=eventStartTimestamp(b);
         return tb-ta;
       });
       $("eventCountText").textContent = `${events.length} etkinlik`;
       if (!events.length){
-        list.innerHTML=`<div class="empty"><strong>Henüz etkinlik yok</strong>İlk etkinliği oluşturmak için “Yeni Etkinlik” düğmesine dokunun.</div>`;
+        list.innerHTML=`<div class="empty"><strong>Henüz etkinlik yok</strong></div>`;
         return;
       }
       list.innerHTML = events.map(e=>{
         const count=Object.keys(e.members||{}).length;
         return `<button class="event-card" data-event-id="${esc(e.id)}" style="text-align:left;width:100%">
           <div><div class="event-title">${esc(e.name||"İsimsiz Etkinlik")}</div>
-          <div class="event-meta"><span class="pill">${esc(formatDateTime(e.eventAt))}</span><span class="pill">${esc(currency(e.fee||0))}</span><span class="pill">${count} kişi</span></div></div>
+          <div class="event-meta"><span class="pill">${esc(formatEventSchedule(e))}</span><span class="pill">${esc(currency(e.fee||0))}</span><span class="pill">${count} kişi</span></div></div>
           <div class="event-arrow">›</div></button>`;
       }).join("");
       list.querySelectorAll("[data-event-id]").forEach(btn=>btn.addEventListener("click",()=>navigateEvent(btn.dataset.eventId)));
@@ -327,7 +348,7 @@
     function renderEvent(){
       const event=getCurrentEvent(); if(!event){ navigateHome(); return; }
       $("detailTitle").textContent=event.name||"Etkinlik";
-      $("detailMeta").innerHTML=`<span class="pill">${esc(formatDateTime(event.eventAt))}</span><span class="pill">Etkinlik ücreti: ${esc(currency(event.fee||0))}</span>`;
+      $("detailMeta").innerHTML=`<span class="pill">${esc(formatEventSchedule(event))}</span><span class="pill">Etkinlik ücreti: ${esc(currency(event.fee||0))}</span>`;
       const members=memberEntries(event);
       const fee=clampMoney(event.fee||0);
       const paid=members.filter(m=>paymentState(m,fee)==="paid").length;
@@ -369,7 +390,7 @@
       }).sort((a,b)=>trCollator.compare(a.className||"",b.className||"")||trCollator.compare(a.name||"",b.name||""));
       $("visibleMemberCount").textContent=`${filtered.length} kişi`;
       const list=$("memberList");
-      if(!filtered.length){ list.innerHTML=`<div class="empty"><strong>Kayıt bulunamadı</strong>${all.length?"Filtreleri değiştirerek tekrar deneyin.":"Bu etkinliğe henüz katılımcı eklenmedi."}</div>`; return; }
+      if(!filtered.length){ list.innerHTML=`<div class="empty"><strong>${all.length?"Kayıt bulunamadı":"Henüz katılımcı yok"}</strong></div>`; return; }
       list.innerHTML=filtered.map(m=>{
         const ps=paymentState(m,fee), bal=debt(m,fee), paidAmt=Math.min(clampMoney(m.paidAmount||0),fee);
         const pText=ps==="paid"?`Ödendi • ${currency(paidAmt)}`:ps==="partial"?`Eksik • ${currency(paidAmt)} / Borç ${currency(bal)}`:`Ödenmedi • Borç ${currency(bal)}`;
@@ -405,24 +426,57 @@
     window.addEventListener("keydown",e=>{if(e.key==="Escape") closeModal();});
 
     function eventFormBody(event={}){
-      const dt=event.eventAt ? String(event.eventAt).slice(0,16) : "";
+      const parts=eventScheduleParts(event);
+      const dateValue=parts.date || todayInputValue();
       return `<div class="form-grid">
         <div><label class="label" for="eventNameInput">Etkinlik adı</label><input id="eventNameInput" class="field" maxlength="120" value="${esc(event.name||"")}" placeholder="Örn. Bilim Merkezi Gezisi"></div>
-        <div><label class="label" for="eventDateInput">Etkinlik zamanı</label><input id="eventDateInput" class="field" type="datetime-local" value="${esc(dt)}"></div>
+        <div><label class="label" for="eventDateInput">Etkinlik tarihi</label><input id="eventDateInput" class="field" type="date" value="${esc(dateValue)}"></div>
+        <div>
+          <span class="label">Etkinlik saati</span>
+          <div class="event-time-grid">
+            <div><label class="time-label" for="eventStartTimeInput">Başlangıç</label><input id="eventStartTimeInput" class="field" type="time" value="${esc(parts.startTime)}"></div>
+            <div><label class="time-label" for="eventEndTimeInput">Bitiş</label><input id="eventEndTimeInput" class="field" type="time" value="${esc(parts.endTime)}"></div>
+          </div>
+
+        </div>
         <div><label class="label" for="eventFeeInput">Etkinlik ücreti</label><div class="money-wrap"><input id="eventFeeInput" class="field" type="number" min="0" step="0.01" inputmode="decimal" value="${esc(event.fee??"")}" placeholder="0"><span class="currency">₺</span></div></div>
       </div>`;
+    }
+    function readEventForm(){
+      const name=$("eventNameInput").value.trim();
+      const eventDate=$("eventDateInput").value;
+      const startTime=$("eventStartTimeInput").value;
+      const endTime=$("eventEndTimeInput").value;
+      const fee=clampMoney($("eventFeeInput").value);
+      return {name,eventDate,startTime,endTime,fee};
+    }
+    function validateEventForm(data){
+      if(!data.name){toast("Etkinlik adını girin.");return false;}
+      if(!data.eventDate){toast("Etkinlik tarihini seçin.");return false;}
+      if(!data.startTime || !data.endTime){toast("Başlangıç ve bitiş saatini seçin.");return false;}
+      if(data.endTime<=data.startTime){toast("Bitiş saati başlangıç saatinden sonra olmalıdır.");return false;}
+      return true;
+    }
+    function eventScheduleData(data){
+      return {
+        eventDate:data.eventDate,
+        startTime:data.startTime,
+        endTime:data.endTime,
+        eventAt:`${data.eventDate}T${data.startTime}`,
+        eventEndAt:`${data.eventDate}T${data.endTime}`
+      };
     }
     function openNewEvent(){
       openModal("Yeni Etkinlik",eventFormBody(),`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="primary-btn" id="saveEventBtn">Etkinliği Kaydet</button>`);
       $("cancelModalBtn").onclick=closeModal; $("saveEventBtn").onclick=saveNewEvent;
     }
     async function saveNewEvent(){
-      const name=$("eventNameInput").value.trim(), eventAt=$("eventDateInput").value, fee=clampMoney($("eventFeeInput").value);
-      if(!name){toast("Etkinlik adını girin.");return;} if(!eventAt){toast("Etkinlik zamanını seçin.");return;}
+      const data=readEventForm();
+      if(!validateEventForm(data))return;
       try{
         $("saveEventBtn").disabled=true;
         const newRef=push(ref(db,`${APP_ROOT}/events`));
-        await set(newRef,{name,eventAt,fee,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),appVersion:APP_VERSION});
+        await set(newRef,{name:data.name,fee:data.fee,...eventScheduleData(data),createdAt:serverTimestamp(),updatedAt:serverTimestamp(),appVersion:APP_VERSION});
         closeModal(); toast("Etkinlik oluşturuldu."); navigateEvent(newRef.key);
       }catch(err){console.error(err);toast("Etkinlik kaydedilemedi.");$("saveEventBtn").disabled=false;}
     }
@@ -433,9 +487,9 @@
     }
     async function updateCurrentEvent(){
       const event=getCurrentEvent(); if(!event)return;
-      const name=$("eventNameInput").value.trim(), eventAt=$("eventDateInput").value, fee=clampMoney($("eventFeeInput").value);
-      if(!name||!eventAt){toast("Etkinlik adı ve zamanı zorunludur.");return;}
-      try{await update(ref(db,`${APP_ROOT}/events/${state.currentEventId}`),{name,eventAt,fee,updatedAt:serverTimestamp(),appVersion:APP_VERSION});closeModal();toast("Etkinlik güncellendi.");}catch(e){console.error(e);toast("Güncelleme başarısız.");}
+      const data=readEventForm();
+      if(!validateEventForm(data))return;
+      try{await update(ref(db,`${APP_ROOT}/events/${state.currentEventId}`),{name:data.name,fee:data.fee,...eventScheduleData(data),updatedAt:serverTimestamp(),appVersion:APP_VERSION});closeModal();toast("Etkinlik güncellendi.");}catch(e){console.error(e);toast("Güncelleme başarısız.");}
     }
     async function deleteCurrentEvent(){
       const e=getCurrentEvent();if(!e)return;
@@ -445,28 +499,28 @@
 
     function addMemberBody(){
       return `<div class="tabs"><button id="tabManual" class="active" type="button">Elle Ekle</button><button id="tabSheet" type="button">E-Tablodan Ekle</button></div>
-        <div id="manualPanel"><div><label class="label" for="manualName">Ad Soyad</label><input id="manualName" class="field" maxlength="120" placeholder="Öğrencinin ad soyadı" autocomplete="off"><div class="help">Elle eklemede yalnızca ad soyad yeterlidir.</div></div></div>
-        <div id="sheetPanel" class="hide"><div id="sheetStatus" class="inline-info">E-tablo hazırlanıyor…</div><div id="studentControls" class="hide" style="margin-top:10px"><div class="student-tools"><input id="studentSearch" class="field" type="search" placeholder="Öğrenci ara…"><select id="studentClass" class="select"><option value="">Tüm sınıflar</option></select></div><div style="display:flex;justify-content:space-between;align-items:center;margin:8px 2px"><span class="help" id="studentResultCount" style="margin:0"></span><button class="ghost-btn" id="selectVisibleStudents" type="button">Görünenleri Seç</button></div><div id="studentList" class="student-list"></div></div></div>
+        <div id="manualPanel"><div><label class="label" for="manualName">Ad Soyad</label><input id="manualName" class="field" maxlength="120" placeholder="Öğrencinin ad soyadı" autocomplete="off"></div></div>
+        <div id="sheetPanel" class="hide"><div id="sheetStatus" class="sheet-status hide"></div><div id="studentControls" class="hide" style="margin-top:10px"><div class="student-tools"><input id="studentSearch" class="field" type="search" placeholder="Öğrenci ara…"><select id="studentClass" class="select"><option value="">Tüm sınıflar</option></select></div><div style="display:flex;justify-content:space-between;align-items:center;margin:8px 2px"><span class="result-count" id="studentResultCount"></span><button class="ghost-btn" id="selectVisibleStudents" type="button">Görünenleri Seç</button></div><div id="studentList" class="student-list"></div></div></div>
         <div style="height:14px"></div>
         <div class="form-grid">
           <div><span class="label">Ödeme durumu</span><div class="segmented" id="paymentSegment"><button type="button" data-pay="unpaid" class="active">Ödenmedi</button><button type="button" data-pay="paid">Ödendi</button><button type="button" data-pay="partial">Eksik</button></div></div>
           <div id="partialAmountWrap" class="hide"><label class="label" for="partialAmount">Ödenen miktar</label><div class="money-wrap"><input id="partialAmount" class="field" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"><span class="currency">₺</span></div></div>
-          <label class="check-line"><input id="permissionCheck" type="checkbox"><span><strong>İzin belgesi geldi</strong><br><span class="help">İşaretli değilse belge eksik olarak kaydedilir.</span></span></label>
+          <label class="check-line"><input id="permissionCheck" type="checkbox"><span><strong>İzin belgesi geldi</strong></span></label>
         </div>`;
     }
     function openAddMemberModal(){
       if(!getCurrentEvent())return;
-      openModal("Üye Ekle",addMemberBody(),`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="primary-btn" id="saveMemberBtn">Kaydet</button>`);
-      const local={mode:"manual",pay:"unpaid"};
+      openModal("Üye Ekle",addMemberBody(),`<button class="secondary-btn" id="cancelModalBtn">Kapat</button><button class="primary-btn" id="saveMemberBtn">Ekle</button>`);
+      const local={mode:"manual",pay:"unpaid",selectedSignatures:new Set(),addedSignatures:new Set()};
       $("cancelModalBtn").onclick=closeModal;
       $("tabManual").onclick=()=>{local.mode="manual";$("tabManual").classList.add("active");$("tabSheet").classList.remove("active");$("manualPanel").classList.remove("hide");$("sheetPanel").classList.add("hide");};
-      $("tabSheet").onclick=()=>{local.mode="sheet";$("tabSheet").classList.add("active");$("tabManual").classList.remove("active");$("manualPanel").classList.add("hide");$("sheetPanel").classList.remove("hide");ensureStudentsLoaded().then(renderStudentPicker).catch(()=>{});};
+      $("tabSheet").onclick=()=>{local.mode="sheet";$("tabSheet").classList.add("active");$("tabManual").classList.remove("active");$("manualPanel").classList.add("hide");$("sheetPanel").classList.remove("hide");ensureStudentsLoaded().then(()=>renderStudentPicker(local)).catch(()=>{});};
       $("paymentSegment").querySelectorAll("button").forEach(b=>b.onclick=()=>{local.pay=b.dataset.pay;$("paymentSegment").querySelectorAll("button").forEach(x=>x.classList.toggle("active",x===b));$("partialAmountWrap").classList.toggle("hide",local.pay!=="partial");});
       $("saveMemberBtn").onclick=()=>saveMemberFromModal(local);
     }
 
     async function ensureStudentsLoaded(force=false){
-      const status=$("sheetStatus"); if(status) status.textContent="E-tablo okunuyor…";
+      const status=$("sheetStatus"); if(status){ status.className="sheet-status inline-info"; status.textContent="E-tablo okunuyor…"; }
       if(!force && state.students.length && Date.now()-state.studentsLoadedAt<5*60*1000) return state.students;
       try{
         const rows=await fetchSheetRows(state.sheetUrl);
@@ -531,23 +585,39 @@
       }
       return out.sort((a,b)=>trCollator.compare(a.className,b.className)||trCollator.compare(a.name,b.name));
     }
-    function renderStudentPicker(){
+    function renderStudentPicker(local){
       const controls=$("studentControls"), status=$("sheetStatus"); if(!controls||!status)return;
-      status.className="inline-info";status.textContent=`${state.students.length} öğrenci yüklendi. NO sütunu kullanılmıyor; yalnızca ADSOYAD ve SINIF alındı.`;
+      status.className="sheet-status hide";status.textContent="";
       controls.classList.remove("hide");
       const classes=[...new Set(state.students.map(s=>s.className).filter(Boolean))].sort(trCollator.compare);
       $("studentClass").innerHTML=`<option value="">Tüm sınıflar</option>`+classes.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
-      $("studentSearch").oninput=renderStudentRows;$("studentClass").onchange=renderStudentRows;$("selectVisibleStudents").onclick=()=>{$("studentList").querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(x=>x.checked=true);};
-      renderStudentRows();
+      $("studentSearch").oninput=()=>renderStudentRows(local);
+      $("studentClass").onchange=()=>renderStudentRows(local);
+      $("selectVisibleStudents").onclick=()=>{
+        $("studentList").querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(x=>local.selectedSignatures.add(x.dataset.signature));
+        renderStudentRows(local);
+      };
+      renderStudentRows(local);
     }
-    function renderStudentRows(){
+    function renderStudentRows(local){
       const list=$("studentList"); if(!list)return;
       const q=normalize($("studentSearch")?.value||""), c=$("studentClass")?.value||"";
-      const ev=getCurrentEvent();const existing=new Set(memberEntries(ev).filter(m=>m.source==="sheet").map(m=>m.sourceSignature).filter(Boolean));
+      const ev=getCurrentEvent();
+      const existing=new Set(memberEntries(ev).filter(m=>m.source==="sheet").map(m=>m.sourceSignature).filter(Boolean));
+      local?.addedSignatures?.forEach(sig=>existing.add(sig));
       const rows=state.students.filter(s=>(!q||normalize(`${s.name} ${s.className}`).includes(q))&&(!c||s.className===c));
-      $("studentResultCount").textContent=`${rows.length} öğrenci`;
-      if(!rows.length){list.innerHTML=`<div class="student-empty">Filtreye uygun öğrenci yok.</div>`;return;}
-      list.innerHTML=rows.map(s=>{const exists=existing.has(s.signature);return `<label class="student-item"><input type="checkbox" data-signature="${esc(s.signature)}" ${exists?"disabled":""}><span><div class="n">${esc(s.name)}</div><div class="c">${esc(s.className||"Sınıf yok")}${exists?" • Bu etkinliğe ekli":""}</div></span></label>`}).join("");
+      const selectedCount=local?.selectedSignatures?.size||0;
+      $("studentResultCount").textContent=`${rows.length} öğrenci • ${selectedCount} seçili`;
+      if(!rows.length){list.innerHTML=`<div class="student-empty">Sonuç yok</div>`;return;}
+      list.innerHTML=rows.map(s=>{
+        const exists=existing.has(s.signature);
+        const checked=!exists&&local?.selectedSignatures?.has(s.signature);
+        return `<label class="student-item"><input type="checkbox" data-signature="${esc(s.signature)}" ${checked?"checked":""} ${exists?"disabled":""}><span><div class="n">${esc(s.name)}</div><div class="c">${esc(s.className||"Sınıf yok")}${exists?" • Bu etkinliğe ekli":""}</div></span></label>`;
+      }).join("");
+      list.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(x=>x.addEventListener("change",()=>{
+        if(x.checked)local.selectedSignatures.add(x.dataset.signature);else local.selectedSignatures.delete(x.dataset.signature);
+        $("studentResultCount").textContent=`${rows.length} öğrenci • ${local.selectedSignatures.size} seçili`;
+      }));
     }
     async function saveMemberFromModal(local){
       const event=getCurrentEvent();if(!event)return;
@@ -563,9 +633,13 @@
         const name=$("manualName").value.trim();if(!name){toast("Ad soyad girin.");return;}
         people=[{name,className:"",source:"manual",sourceSignature:""}];
       }else{
-        const sigs=[...$("studentList").querySelectorAll('input[type="checkbox"]:checked')].map(x=>x.dataset.signature);
+        const sigs=[...(local.selectedSignatures||[])];
         if(!sigs.length){toast("En az bir öğrenci seçin.");return;}
-        const setS=new Set(sigs);people=state.students.filter(s=>setS.has(s.signature)).map(s=>({name:s.name,className:s.className,source:"sheet",sourceSignature:s.signature}));
+        const currentExisting=new Set(memberEntries(getCurrentEvent()).filter(m=>m.source==="sheet").map(m=>m.sourceSignature).filter(Boolean));
+        local.addedSignatures.forEach(sig=>currentExisting.add(sig));
+        const setS=new Set(sigs.filter(sig=>!currentExisting.has(sig)));
+        people=state.students.filter(s=>setS.has(s.signature)).map(s=>({name:s.name,className:s.className,source:"sheet",sourceSignature:s.signature}));
+        if(!people.length){local.selectedSignatures.clear();renderStudentRows(local);toast("Seçilen öğrenciler zaten etkinliğe ekli.");return;}
       }
       try{
         $("saveMemberBtn").disabled=true;
@@ -574,7 +648,18 @@
           const id=push(ref(db,`${APP_ROOT}/events/${state.currentEventId}/members`)).key;
           updates[`${APP_ROOT}/events/${state.currentEventId}/members/${id}`]={...p,paidAmount,permissionReceived,createdAt:Date.now(),updatedAt:Date.now()};
         }
-        await update(ref(db),updates);closeModal();toast(people.length===1?"Katılımcı eklendi.":`${people.length} katılımcı eklendi.`);
+        await update(ref(db),updates);
+        $("saveMemberBtn").disabled=false;
+        if(local.mode==="manual"){
+          $("manualName").value="";
+          $("manualName").focus();
+        }else{
+          people.forEach(p=>{if(p.sourceSignature)local.addedSignatures.add(p.sourceSignature);});
+          local.selectedSignatures.clear();
+          renderStudentRows(local);
+          $("studentSearch")?.focus();
+        }
+        toast(people.length===1?"Katılımcı eklendi.":`${people.length} katılımcı eklendi.`);
       }catch(err){console.error(err);toast("Katılımcı kaydedilemedi.");$("saveMemberBtn").disabled=false;}
     }
 
@@ -595,7 +680,7 @@
     }
     function openEditMemberModal(memberId){
       const event=getCurrentEvent(),m=event?.members?.[memberId];if(!m)return;
-      openModal("Katılımcıyı Düzenle",`<div class="form-grid"><div><label class="label">Ad Soyad</label><input id="editMemberName" class="field" value="${esc(m.name||"")}"></div><div><label class="label">Sınıf</label><input id="editMemberClass" class="field" value="${esc(m.className||"")}" placeholder="Elle eklenenlerde boş kalabilir"></div><div><label class="label">Toplam ödenen</label><div class="money-wrap"><input id="editPaidAmount" class="field" type="number" min="0" max="${clampMoney(event.fee||0)}" step="0.01" value="${clampMoney(m.paidAmount||0)}"><span class="currency">₺</span></div><div class="help">Etkinlik ücreti: ${esc(currency(event.fee||0))}</div></div><label class="check-line"><input id="editPermission" type="checkbox" ${m.permissionReceived?"checked":""}><span><strong>İzin belgesi geldi</strong></span></label></div>`,`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="primary-btn" id="saveMemberEditBtn">Güncelle</button>`);
+      openModal("Katılımcıyı Düzenle",`<div class="form-grid"><div><label class="label">Ad Soyad</label><input id="editMemberName" class="field" value="${esc(m.name||"")}"></div><div><label class="label">Sınıf</label><input id="editMemberClass" class="field" value="${esc(m.className||"")}" placeholder="Elle eklenenlerde boş kalabilir"></div><div><label class="label">Toplam ödenen</label><div class="money-wrap"><input id="editPaidAmount" class="field" type="number" min="0" max="${clampMoney(event.fee||0)}" step="0.01" value="${clampMoney(m.paidAmount||0)}"><span class="currency">₺</span></div></div><label class="check-line"><input id="editPermission" type="checkbox" ${m.permissionReceived?"checked":""}><span><strong>İzin belgesi geldi</strong></span></label></div>`,`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="primary-btn" id="saveMemberEditBtn">Güncelle</button>`);
       $("cancelModalBtn").onclick=closeModal;$("saveMemberEditBtn").onclick=()=>saveMemberEdit(memberId);
     }
     async function saveMemberEdit(memberId){
@@ -613,9 +698,8 @@
     function openReportModal(){
       const event=getCurrentEvent();if(!event)return;
       openModal("Rapor / Yazdır",`<div class="report-options">
-        <div class="inline-info"><strong>Ad Soyad</strong> raporda her zaman yer alır. Aşağıdaki ek sütunları siz seçebilirsiniz.</div>
         <label class="check-line"><input type="checkbox" id="repClass" checked><span><strong>Sınıf bilgisi</strong></span></label>
-        <label class="check-line"><input type="checkbox" id="repPayment"><span><strong>Ödeme durumu</strong><br><span class="help">Ödendi / Eksik / Ödenmedi</span></span></label>
+        <label class="check-line"><input type="checkbox" id="repPayment"><span><strong>Ödeme durumu</strong></span></label>
         <label class="check-line"><input type="checkbox" id="repAmounts"><span><strong>Ödenen tutar ve kalan borç</strong></span></label>
         <label class="check-line"><input type="checkbox" id="repPermission"><span><strong>İzin belgesi durumu</strong></span></label>
         <label class="check-line"><input type="checkbox" id="repSummary" checked><span><strong>Üst özet bilgileri</strong></span></label>
@@ -631,11 +715,10 @@
       const members=memberEntries(event).sort((a,b)=>trCollator.compare(a.className||"",b.className||"")||trCollator.compare(a.name||"",b.name||""));
       const totalPaid=members.reduce((s,m)=>s+Math.min(clampMoney(m.paidAmount||0),fee),0);
       const totalDebt=Math.max(0,fee*members.length-totalPaid);
-      const fullPaid=members.filter(m=>paymentState(m,fee)==="paid").length;
       const permissions=members.filter(m=>m.permissionReceived===true).length;
       const heads=["No","Ad Soyad"];if(options.showClass)heads.push("Sınıf");if(options.showPayment)heads.push("Ödeme Durumu");if(options.showAmounts){heads.push("Ödenen");heads.push("Kalan Borç");}if(options.showPermission)heads.push("İzin Belgesi");
       const rows=members.map((m,i)=>{const ps=paymentState(m,fee);const cells=[i+1,esc(m.name||"")];if(options.showClass)cells.push(esc(m.className||"—"));if(options.showPayment)cells.push(ps==="paid"?"Ödendi":ps==="partial"?"Eksik ödendi":"Ödenmedi");if(options.showAmounts){cells.push(esc(currency(Math.min(clampMoney(m.paidAmount||0),fee))));cells.push(esc(currency(debt(m,fee))));}if(options.showPermission)cells.push(m.permissionReceived?"Geldi":"Eksik");return `<tr>${cells.map(c=>`<td>${c}</td>`).join("")}</tr>`;}).join("");
-      return `<div class="print-sheet"><h1>${esc(event.name||"Etkinlik Katılımcı Listesi")}</h1><div class="print-meta">${esc(formatDateTime(event.eventAt))} • Etkinlik Ücreti: ${esc(currency(fee))}</div>${options.showSummary?`<div class="report-summary"><span><strong>Katılımcı:</strong> ${members.length}</span><span><strong>Ödeme tamam:</strong> ${fullPaid}</span><span><strong>İzin geldi:</strong> ${permissions}</span>${options.showAmounts?`<span><strong>Toplanan:</strong> ${esc(currency(totalPaid))}</span><span><strong>Kalan:</strong> ${esc(currency(totalDebt))}</span>`:""}</div>`:""}<table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows||`<tr><td colspan="${heads.length}" style="text-align:center;padding:18px">Katılımcı bulunmuyor.</td></tr>`}</tbody></table><div class="report-foot">Etkinlik Takip Programı v${APP_VERSION} • Kodlayan: Ferhat Karagöz</div></div>`;
+      return `<div class="print-sheet"><h1>${esc(event.name||"Etkinlik Katılımcı Listesi")}</h1><div class="print-meta">${esc(formatEventSchedule(event))} • Etkinlik Ücreti: ${esc(currency(fee))}</div>${options.showSummary?`<div class="report-summary"><span><strong>Katılımcı:</strong> ${members.length}</span><span><strong>İzin geldi:</strong> ${permissions}</span>${options.showAmounts?`<span><strong>Toplanan:</strong> ${esc(currency(totalPaid))}</span><span><strong>Kalan:</strong> ${esc(currency(totalDebt))}</span>`:""}</div>`:""}<table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows||`<tr><td colspan="${heads.length}" style="text-align:center;padding:18px">Katılımcı bulunmuyor.</td></tr>`}</tbody></table></div>`;
     }
     function updateReportPreview(){const mount=$("reportPreviewMount");if(mount)mount.innerHTML=buildReportHTML(reportOptions());}
     function printReport(){
@@ -644,7 +727,7 @@
     }
 
     function openSettings(){
-      openModal("Ayarlar",`<div class="form-grid"><div><label class="label" for="sheetUrlInput">Öğrenci e-tablo bağlantısı</label><textarea id="sheetUrlInput" class="field" style="height:100px;padding:12px;resize:vertical">${esc(state.sheetUrl)}</textarea><div class="help">Program <strong>Ogrenciler</strong> adlı e-tablo sayfasını okur ve yalnızca <strong>ADSOYAD</strong> ile <strong>SINIF</strong> sütunlarını kullanır. NO sütunu alınmaz.</div></div><button class="secondary-btn full" id="testSheetBtn">E-Tabloyu Test Et / Yenile</button><div id="settingsSheetStatus"></div><div class="danger-zone"><div class="inline-danger"><strong>Veritabanını sıfırla</strong><br>Bu işlem <strong>${APP_ROOT}</strong> altındaki tüm etkinlikleri, katılımcıları ve ayarları kalıcı olarak siler.</div><button class="danger-btn full" id="resetDbBtn" style="margin-top:10px">Veritabanını Sıfırla</button></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Kapat</button><button class="primary-btn" id="saveSettingsBtn">Ayarları Kaydet</button>`);
+      openModal("Ayarlar",`<div class="form-grid"><div><label class="label" for="sheetUrlInput">Öğrenci e-tablo bağlantısı</label><textarea id="sheetUrlInput" class="field" style="height:100px;padding:12px;resize:vertical">${esc(state.sheetUrl)}</textarea></div><button class="secondary-btn full" id="testSheetBtn">E-Tabloyu Test Et / Yenile</button><div id="settingsSheetStatus"></div><div class="danger-zone"><div class="inline-danger"><strong>Veritabanını sıfırla</strong><br>Tüm kayıtlar kalıcı olarak silinir.</div><button class="danger-btn full" id="resetDbBtn" style="margin-top:10px">Veritabanını Sıfırla</button></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Kapat</button><button class="primary-btn" id="saveSettingsBtn">Ayarları Kaydet</button>`);
       $("cancelModalBtn").onclick=closeModal;$("saveSettingsBtn").onclick=saveSettings;$("testSheetBtn").onclick=testSheet;$("resetDbBtn").onclick=openResetConfirm;
     }
     async function testSheet(){
@@ -656,7 +739,7 @@
       try{await update(ref(db,`${APP_ROOT}/settings`),{sheetUrl,updatedAt:serverTimestamp(),appVersion:APP_VERSION});state.sheetUrl=sheetUrl;state.students=[];state.studentsLoadedAt=0;closeModal();toast("Ayarlar kaydedildi.");}catch(e){console.error(e);toast("Ayarlar kaydedilemedi.");}
     }
     function openResetConfirm(){
-      openModal("Veritabanını Sıfırla",`<div class="form-grid"><div class="inline-danger">Bu işlem geri alınamaz. <strong>${APP_ROOT}</strong> yolundaki tüm kayıtlar silinecek.</div><div><label class="label" for="resetConfirmInput">Onaylamak için SIFIRLA yazın</label><input id="resetConfirmInput" class="field" autocomplete="off" placeholder="SIFIRLA"></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="danger-btn" id="confirmResetBtn">Kalıcı Olarak Sıfırla</button>`);
+      openModal("Veritabanını Sıfırla",`<div class="form-grid"><div class="inline-danger">Bu işlem geri alınamaz.</div><div><label class="label" for="resetConfirmInput">Onaylamak için SIFIRLA yazın</label><input id="resetConfirmInput" class="field" autocomplete="off" placeholder="SIFIRLA"></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Vazgeç</button><button class="danger-btn" id="confirmResetBtn">Kalıcı Olarak Sıfırla</button>`);
       $("cancelModalBtn").onclick=closeModal;$("confirmResetBtn").onclick=resetDatabase;
     }
     async function resetDatabase(){

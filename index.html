@@ -119,7 +119,7 @@
       <div class="topbar-inner">
         <div class="brand">
           <h1>Etkinlik Takip Programı</h1>
-          <div class="brand-meta"><span id="connectionDot" class="status-dot"></span><span id="connectionText">Bağlanıyor…</span><span>•</span><span>v1.1</span></div>
+          <div class="brand-meta"><span id="connectionDot" class="status-dot"></span><span id="connectionText">Bağlanıyor…</span><span>•</span><span>v1.2</span></div>
         </div>
         <button class="icon-btn" id="settingsBtn" aria-label="Ayarlar" title="Ayarlar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88L3.7 6.56a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8.5c.14.38.36.72.66 1 .3.27.69.4 1.1.4h.54a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.1.4c-.3.28-.52.62-.66 1Z"/></svg>
@@ -182,7 +182,7 @@
       </section>
     </main>
 
-    <div class="footer"><strong>Kodlayan: Ferhat Karagöz</strong> • Etkinlik Takip Programı v1.1</div>
+    <div class="footer"><strong>Kodlayan: Ferhat Karagöz</strong> • Etkinlik Takip Programı v1.2</div>
   </div>
 
   <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
@@ -201,9 +201,10 @@
     import { getAnalytics, isSupported as analyticsIsSupported } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
     import { getDatabase, ref, onValue, push, set, update, remove, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
-    const APP_VERSION = "1.1";
+    const APP_VERSION = "1.2";
     const APP_ROOT = "etkinliktakip";
     const DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/1OeDI5rQvWXP6s5OhgRFrh1dThnBMmA9mrCjgYuk1Qtw/edit?usp=sharing";
+    const DEFAULT_SHEET_NAME = "Ogrenciler";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBABt0TN-k_ALfHyDv0yGzOiZMhACxfJbU",
@@ -475,7 +476,7 @@
         return students;
       }catch(err){
         console.error(err);
-        if(status){status.className="inline-danger";status.innerHTML=`E-tablo okunamadı. Dosyanın <strong>bağlantıya sahip herkes tarafından görüntülenebilir</strong> olduğundan ve ilk satırda <strong>ADSOYAD</strong> ile <strong>SINIF</strong> başlıklarının bulunduğundan emin olun.<br><br><small>${esc(err.message||err)}</small>`;}
+        if(status){status.className="inline-danger";status.innerHTML=`E-tablo okunamadı. Dosyanın <strong>bağlantıya sahip herkes tarafından görüntülenebilir</strong> olduğundan ve <strong>Ogrenciler</strong> adlı sayfada ilk satırda <strong>ADSOYAD</strong> ile <strong>SINIF</strong> başlıklarının bulunduğundan emin olun.<br><br><small>${esc(err.message||err)}</small>`;}
         throw err;
       }
     }
@@ -487,10 +488,11 @@
     }
     async function fetchSheetRows(url){
       const {id,gid}=sheetParts(url);
-      const suffix=gid?`&gid=${encodeURIComponent(gid)}`:"";
+      const sheet=encodeURIComponent(DEFAULT_SHEET_NAME);
       const urls=[
-        `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv${suffix}`,
-        `https://docs.google.com/spreadsheets/d/${id}/export?format=csv${gid?`&gid=${encodeURIComponent(gid)}`:""}`
+        `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${sheet}`,
+        `https://docs.google.com/spreadsheets/d/${id}/export?format=csv&sheet=${sheet}`,
+        ...(gid?[`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&gid=${encodeURIComponent(gid)}`]:[])
       ];
       let lastErr;
       for(const u of urls){
@@ -499,10 +501,12 @@
           if(!res.ok) throw new Error(`HTTP ${res.status}`);
           const text=await res.text();
           if(!text || /<html/i.test(text.slice(0,300))) throw new Error("CSV yerine oturum sayfası döndü.");
-          return parseCSV(text);
+          const rows=parseCSV(text);
+          if(!rows?.length) throw new Error(`'${DEFAULT_SHEET_NAME}' sayfası boş veya okunamadı.`);
+          return rows;
         }catch(e){lastErr=e;}
       }
-      throw lastErr||new Error("E-tablo indirilemedi.");
+      throw new Error(`'${DEFAULT_SHEET_NAME}' sayfası okunamadı. ${lastErr?.message||"E-tablo indirilemedi."}`);
     }
     function parseCSV(text){
       const rows=[];let row=[],field="",quoted=false;
@@ -631,7 +635,7 @@
       const permissions=members.filter(m=>m.permissionReceived===true).length;
       const heads=["No","Ad Soyad"];if(options.showClass)heads.push("Sınıf");if(options.showPayment)heads.push("Ödeme Durumu");if(options.showAmounts){heads.push("Ödenen");heads.push("Kalan Borç");}if(options.showPermission)heads.push("İzin Belgesi");
       const rows=members.map((m,i)=>{const ps=paymentState(m,fee);const cells=[i+1,esc(m.name||"")];if(options.showClass)cells.push(esc(m.className||"—"));if(options.showPayment)cells.push(ps==="paid"?"Ödendi":ps==="partial"?"Eksik ödendi":"Ödenmedi");if(options.showAmounts){cells.push(esc(currency(Math.min(clampMoney(m.paidAmount||0),fee))));cells.push(esc(currency(debt(m,fee))));}if(options.showPermission)cells.push(m.permissionReceived?"Geldi":"Eksik");return `<tr>${cells.map(c=>`<td>${c}</td>`).join("")}</tr>`;}).join("");
-      return `<div class="print-sheet"><h1>${esc(event.name||"Etkinlik Katılımcı Listesi")}</h1><div class="print-meta">${esc(formatDateTime(event.eventAt))} • Etkinlik Ücreti: ${esc(currency(fee))}</div>${options.showSummary?`<div class="report-summary"><span><strong>Katılımcı:</strong> ${members.length}</span><span><strong>Ödeme tamam:</strong> ${fullPaid}</span><span><strong>İzin geldi:</strong> ${permissions}</span>${options.showAmounts?`<span><strong>Toplanan:</strong> ${esc(currency(totalPaid))}</span><span><strong>Kalan:</strong> ${esc(currency(totalDebt))}</span>`:""}</div>`:""}<table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows||`<tr><td colspan="${heads.length}" style="text-align:center;padding:18px">Katılımcı bulunmuyor.</td></tr>`}</tbody></table><div class="report-foot">Etkinlik Takip Programı v${APP_VERSION} • Kodlayan: Emine Karagöz</div></div>`;
+      return `<div class="print-sheet"><h1>${esc(event.name||"Etkinlik Katılımcı Listesi")}</h1><div class="print-meta">${esc(formatDateTime(event.eventAt))} • Etkinlik Ücreti: ${esc(currency(fee))}</div>${options.showSummary?`<div class="report-summary"><span><strong>Katılımcı:</strong> ${members.length}</span><span><strong>Ödeme tamam:</strong> ${fullPaid}</span><span><strong>İzin geldi:</strong> ${permissions}</span>${options.showAmounts?`<span><strong>Toplanan:</strong> ${esc(currency(totalPaid))}</span><span><strong>Kalan:</strong> ${esc(currency(totalDebt))}</span>`:""}</div>`:""}<table><thead><tr>${heads.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows||`<tr><td colspan="${heads.length}" style="text-align:center;padding:18px">Katılımcı bulunmuyor.</td></tr>`}</tbody></table><div class="report-foot">Etkinlik Takip Programı v${APP_VERSION} • Kodlayan: Ferhat Karagöz</div></div>`;
     }
     function updateReportPreview(){const mount=$("reportPreviewMount");if(mount)mount.innerHTML=buildReportHTML(reportOptions());}
     function printReport(){
@@ -640,12 +644,12 @@
     }
 
     function openSettings(){
-      openModal("Ayarlar",`<div class="form-grid"><div><label class="label" for="sheetUrlInput">Öğrenci e-tablo bağlantısı</label><textarea id="sheetUrlInput" class="field" style="height:100px;padding:12px;resize:vertical">${esc(state.sheetUrl)}</textarea><div class="help">Program yalnızca <strong>ADSOYAD</strong> ve <strong>SINIF</strong> sütunlarını kullanır. NO sütunu alınmaz.</div></div><button class="secondary-btn full" id="testSheetBtn">E-Tabloyu Test Et / Yenile</button><div id="settingsSheetStatus"></div><div class="danger-zone"><div class="inline-danger"><strong>Veritabanını sıfırla</strong><br>Bu işlem <strong>${APP_ROOT}</strong> altındaki tüm etkinlikleri, katılımcıları ve ayarları kalıcı olarak siler.</div><button class="danger-btn full" id="resetDbBtn" style="margin-top:10px">Veritabanını Sıfırla</button></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Kapat</button><button class="primary-btn" id="saveSettingsBtn">Ayarları Kaydet</button>`);
+      openModal("Ayarlar",`<div class="form-grid"><div><label class="label" for="sheetUrlInput">Öğrenci e-tablo bağlantısı</label><textarea id="sheetUrlInput" class="field" style="height:100px;padding:12px;resize:vertical">${esc(state.sheetUrl)}</textarea><div class="help">Program <strong>Ogrenciler</strong> adlı e-tablo sayfasını okur ve yalnızca <strong>ADSOYAD</strong> ile <strong>SINIF</strong> sütunlarını kullanır. NO sütunu alınmaz.</div></div><button class="secondary-btn full" id="testSheetBtn">E-Tabloyu Test Et / Yenile</button><div id="settingsSheetStatus"></div><div class="danger-zone"><div class="inline-danger"><strong>Veritabanını sıfırla</strong><br>Bu işlem <strong>${APP_ROOT}</strong> altındaki tüm etkinlikleri, katılımcıları ve ayarları kalıcı olarak siler.</div><button class="danger-btn full" id="resetDbBtn" style="margin-top:10px">Veritabanını Sıfırla</button></div></div>`,`<button class="secondary-btn" id="cancelModalBtn">Kapat</button><button class="primary-btn" id="saveSettingsBtn">Ayarları Kaydet</button>`);
       $("cancelModalBtn").onclick=closeModal;$("saveSettingsBtn").onclick=saveSettings;$("testSheetBtn").onclick=testSheet;$("resetDbBtn").onclick=openResetConfirm;
     }
     async function testSheet(){
       const url=$("sheetUrlInput").value.trim(),status=$("settingsSheetStatus");status.className="inline-info";status.textContent="E-tablo test ediliyor…";
-      try{const rows=await fetchSheetRows(url);const students=extractStudents(rows);status.className="inline-info";status.textContent=`Bağlantı başarılı. ${students.length} öğrenci bulundu.`;state.students=students;state.studentsLoadedAt=Date.now();}catch(e){status.className="inline-danger";status.textContent=`Bağlantı başarısız: ${e.message||e}`;}
+      try{const rows=await fetchSheetRows(url);const students=extractStudents(rows);status.className="inline-info";status.textContent=`Bağlantı başarılı. ${DEFAULT_SHEET_NAME} sayfasında ${students.length} öğrenci bulundu.`;state.students=students;state.studentsLoadedAt=Date.now();}catch(e){status.className="inline-danger";status.textContent=`Bağlantı başarısız: ${e.message||e}`;}
     }
     async function saveSettings(){
       const sheetUrl=$("sheetUrlInput").value.trim();try{sheetParts(sheetUrl);}catch(e){toast(e.message);return;}
